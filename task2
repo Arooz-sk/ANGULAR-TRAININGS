@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<head>
+	<title>angular</title>
+</head>
+<body>
+	
+		<form ng-app="task3" ng-controller="Controller1" name="myForm" novalidate >
+			<h2>SIGN UP</h2>
+			<p>USERNAME:<br>
+			<input type="text" name="user" ng-model="user" required>
+			<span style="color: red" ng-show="myForm.user.$invalid ">
+			<span ng-show="myForm.user.$error.required">ENTER USERNAME</span>
+		</span>
+	</p>
+			<p>GMAIL:<br>
+			<input type="email" name="email" ng-model="email" required>
+		
+			<span style="color: red" ng-show="myForm.email.$invalid ">
+			<span ng-show="myForm.email.$error.required">ENTER GMAIL </span>
+			<span ng-show="myForm.email.$error.email"> ENTER VALID GMAIL</span>
+		</span>
+	</p>
+	<p>PASSWORD:<br>
+			<input type="" name="password" ng-model="password" required>
+			<span style="color: red" ng-show="myForm.password.$pristine">
+			<span ng-show="myForm.password.$error.required">ENTER PASSWORD </span>	
+		</span>
+	</p>
+	
+	<p>
+		<input type="submit"  ng-click="addinfo()">
+
+		</p>
+<h2>LOGIN</h2>
+			<p>GMAIL:<br>
+			<input type="email1" name="emails" ng-model="emails" required>
+		
+			
+	</p>
+	<p>PASSWORD:<br>
+			<input type="" name="passwords" ng-model="passwords" required>
+			
+	</p>
+	<input type="submit" value="login"  ng-click="add()">
+
+
+	<span ng-show="check" style="color: red">Login successful	
+	</span>
+	<span ng-show="fail" style="color: red">Enter correct details</span>
+	
+		<br><br>
+			
+			<h2>PINCODE</h2>
+			<input type="text" name="pincodes" ng-model="pincodes" placeholder="Pls enter pincode" >
+			<div ng-repeat="pin in pincode |  filter: pincodes1 ">
+			</div>
+				<div ng-show='available' >Available</div>
+			<div ng-show='notavailable' style="color: red">Not available</div>
+		<br><br>
+		<h2>SEARCH USERNAME</h2>
+
+		<input type="text" name="searchusername" placeholder="search user" ng-model="searchusername">
+
+		<table border="1">
+			<th >Username</th>
+			<tr ng-repeat="x in registered  | filter:searchusername">
+			<td>{{x.user}}</td>
+			</tr>
+		</table>
+			<br><br>
+		
+				<u><h2>Products</h2></u>
+	
+		<input type="text" name="searchpro" ng-model="searchpro" placeholder="Search products">
+		<div ng-repeat="y in products | filter:searchpro">
+			<div>{{y.id}}</div>
+			<div>{{y.proname}}</div>
+			<div>{{y.description}}</div>
+			<img ng-src="{{y.pics}}"  ></img>
+			<div>{{y.price}}RS</div>
+		</div>
+</form>
+<style type="text/css">
+	img{
+		width: 100 px;
+		height: 100px;
+	}
+</style>
+
+<script type="text/javascript">
+	var app=angular.module("task3",[]);	
+	app.controller('Controller1',function($scope){
+	$scope.registered=[]
+
+ $scope.pincode=["421605","400603","400037","400604","400612"];
+	$scope.products=[{'id':1,'proname':'ELIZABETH FLOWER','description':'This ia a blue flower rarely found in India.','pics':"http://cdn.shopify.com/s/files/1/0035/2754/0782/articles/International_Flower_Day_1200x1200.jpeg?v=1579365491",'price':200},
+	{'id':2,'proname':'FOREST FLOWER','description':'A yellow flower with a very unique petals style.','pics':"https://thumbs.dreamstime.com/b/yellow-orange-starburst-flower-starburst-flower-yellow-orange-nature-jpgyellow-orange-starburst-flower-starburst-flower-yellow-192959441.jpg",'price':20},
+	{'id':3,'proname':'GARDEN FLOWER','description':'All time favorite white flower with a very nice fragnance','pics':"https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__340.jpg",'price':20}
+	]
+
+var c=$scope.email1
+$scope.addinfo=function(item){
+
+var d=$scope.email
+var g=$scope.password
+var u=$scope.user
+			$scope.registered.push({'user':u,'email':d ,'password':g});
+			console.log($scope.registered)
+
+}
+
+
+
+$scope.add=function(){
+	
+$scope.check=false
+$scope.fail=false
+
+console.log(mail_index=$scope.registered.findIndex(x=>x.email===$scope.emails))
+console.log(paasword_index=$scope.registered.findIndex(x=>x.password===$scope.passwords))
+
+
+if( (paasword_index===mail_index ) && paasword_index>=0 && mail_index >=0 ){
+	
+	$scope.check=true
+
+}else{
+	
+	$scope.check=false;
+	$scope.fail=true
+}
+
+}
+
+$scope.pincodes1=function(x){
+ $scope.available=false;
+$scope.notavailable=false;
+
+
+if($scope.pincode.indexOf($scope.pincodes)!=-1){
+	
+	$scope.available=true
+
+}else{
+$scope.notavailable=true
+
+}
+
+}
+
+
+
+	});
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
