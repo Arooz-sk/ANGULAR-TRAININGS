@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>signin</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="nav-wrapper">
+    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">HOME</a>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="amreg.html"><span class="glyphicon glyphicon-user"></span> Sign UP</a></li>
+   
+      </div>
+
+      <div ng-app="myModule2" ng-controller="signinController"  >
+
+<div class="container-fluid" style="margin-right; 450px; margin-top: 100px  ;margin-right: 500px ; border-style: solid ;padding-top: 70px ;padding-bottom: 50px">
+	<div class="container-fluid" style="margin-left: 100px">
+<h3 style="margin-left: 70px">Login </h3>
+			<p>Gmail<br>
+			<input type="email1" name="email1" ng-model="email1" required>
+		
+			
+	</p>
+	<p>Password<br>
+			<input type="password" name="password1" ng-model="password1" required>
+			
+	</p>
+	<input type="submit" value="login" class="btn btn-primary"  ng-click="add()">
+
+
+	<span ng-show="check" style="color: red">Login successful	
+	</span>
+	<span ng-show="fail" style="color: red">Pls register</span>
+	
+		<br>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+	var app=angular.module("myModule2",[]);
+	
+	app.controller('signinController',function($scope){
+	
+
+
+	$scope.registered=[{'user':"mahesh" ,'email':"mahesh@gmail.com" ,'password':"m"}];
+
+	$scope.add=function(){
+$scope.check=false
+$scope.fail=false
+var u=localStorage.getItem('gmail')
+var p=localStorage.getItem('pass')
+ if(u===$scope.email1 && p===$scope.password1 ){
+ 
+ 	var p='add.html'
+ 	window.location.href = p;
+ }
+
+
+else{
+	
+	$scope.check=false;
+	$scope.fail=true
+}
+
+}
+});
+</script>
+</body>
+</html>
