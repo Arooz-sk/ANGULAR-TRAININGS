@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <meta charset="utf-8" />
+    <meta name="author" content="script tutorials" />
+
+<!-- ABOUT US/LOGO/PRIVACY-->
+    <meta name="description" content=" demo page">
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <!-- add styles -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- add javascripts -->
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <!-- ABOUT US/LOGO/PRIVACY-->
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+	<!-- ABOUT US/LOGO/PRIVACY-->
+	<header><title>angular</title>
+	   <div class="wrap">
+        <!-- logo -->
+        <a href="#!"><img class="logo" src="images/logo.png" /></a>
+
+        <!-- navigation menu -->
+        <nav>
+            <ul>
+                <li><a id="workbtn" href="#!/" ng-class="{activesmall:part == 'projects'}" >Cart</a></li>
+                <li><a id="privacybtn" href="#!/privacy" ng-class="{activesmall:part == 'privacy'}">privacy & terms</a></li>
+                <li><a id="aboutbtn" href="#!/about" ng-class="{activesmall:part == 'about'}">about</a></li>
+                <li style="margin-right:0px"><a id="contactbtn" class="active" href="javascript: void(0)" ng-click="showform()">contact us</a></li>
+            </ul>
+        </nav>
+    </div></header>
+    > <!-- ABOUT US/LOGO/PRIVACY-->
+
+    <hr style="width: 100%;">
+</head>
+<body>
+	
+	<div ng-app="myModule" ng-controller="firstController" ng-init="pname" name="myForm" novalidate >
+			<div class="container">
+				<h2><center><img class="logo1" width="50px" height="50 px" src="images/aaa.png"><i>roduct Page</i></center></h2>
+		<br><br>
+		    	<div class='row' style="margin-left: 15%;">
+						<div ng-repeat="x in products ">
+							<div class="col-md-4">
+								<img ng-src={{x.pimg}}> </img>
+								<div class="row"></div>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+							
+								<div ng-style="myobj">{{x.pname}}</div>
+								<div>{{x.pdesc}}</div>
+								<center><div ng-style="myobj">{{x.price }} RS</div></center><br>
+								<div><center><button ng-click="view()">VIEW</button></center></div><br><br>
+						
+							</div>
+						</div>
+					</div>
+				</div>
+	<style type="text/css">
+	img{
+		width: 100 px;
+		height: 100px;
+	}
+	.checked {
+  color: orange;
+}
+	header {
+  height:110px;
+}
+header .wrap {
+  height:100%;
+}
+header .logo {
+  margin-top:20px;
+  margin-left: 15%;
+}
+header nav {
+  float:right;
+  margin-top:17px;
+}
+header nav ul {
+  margin:1em 0;
+  padding:0;
+}
+header nav ul li {
+  display:block;
+  float:left;
+  margin-right:20px;
+}
+ header nav ul li a {
+  border-radius:24px;
+  color:#aaa;
+  font-size:1.4em;
+  font-weight:400;
+  padding:10px 27px;
+  text-decoration:none;
+}
+header nav ul li a.active {
+  background-color:#c33c3a;
+  color:#fff;
+}
+header nav ul li a.active:hover {
+  background-color:#d2413f;
+  color:#fff;
+}
+header nav ul li a:hover,header nav ul li a.activesmall {
+  color:#c33c3a;
+}
+	</style>
+<script type="text/javascript">
+	var app=angular.module("myModule",[]);	
+	app.controller('firstController',function($scope){
+	$scope.registered=[]
+
+ $scope.pincode=["421605","400603","400037","400604"];
+	$scope.products=[
+	{'id':1,'pname':'REALME C21 ','pdesc':'Features a 5000 mAh powerful battery.','pimg':"images/p1.jpeg",'price':'₹8,499'},
+	{'id':2,'pname':'REALME NARZO 30','pdesc':'This smartphone runs on the Helio G95 Gaming Processor. ','pimg':"images/p2.jpeg",'price':'₹15,999'},
+	{'id':3,'pname':'REALME 8-5G','pdesc':'High-speed internet, smooth gaming, and stunning photos.','pimg':'images/p3.jpeg','price':'₹14,499'},
+	{'id':4,'pname':'REALME 8-5G','pdesc':' The realme 8 5G is a visual treat with its slim and lightweight.','pimg':"images/p4.jpeg",'price':'₹9600'},
+	{'id':5,'pname':'OPPO A53','pdesc':'smooth visuals while streaming content, gaming, and so on.','pimg':'images/p5.jpeg','price':'₹13,990'},
+	{'id':6,'pname':'OPPO A21','pdesc':'Massive Battery for hours of gaming marathons.','pimg':"images/p6.jpeg",'price':'₹8,990'},
+	{'id':7,'pname':'OPPO 8','pdesc':'A visual treat with its slim and lightweight design..','pimg':'images/p7.jpeg','price':"₹8,500"},
+	{'id':8,'pname':'Mi 11 LITE','pdesc':'you can unlock your device in an instant.. ','pimg':"images/p8.jpeg",'price':'₹9,000'},
+	{'id':9,'pname':'REALME NARZO 30 5G','pdesc':'Protective Film (Screen), Quick Guide, Warranty Card. ','pimg':"images/phone.jpeg",'price':'₹15999'}
+	]
+	$scope.myobj = {
+    "color" : "blue",
+  }
+
+});
+
+
+
+</script>
+</body>
+</html>
